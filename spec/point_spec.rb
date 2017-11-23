@@ -22,8 +22,8 @@ RSpec.describe Point do
   context "# herencia" do
     before :each do
       @p1 = Point::Point.new(1,1)
-    end    
-    
+    end
+
     it "un objeto punto es una instancia de la clase Point" do
        expect(@p1).to be_an_instance_of(Point::Point) # =>@p1.instance_of?(Point) # passes
     end
@@ -52,65 +52,65 @@ RSpec.describe Point do
   context "# tipo" do
     before :each do
       @p1 = Point::Point.new(1,1)
-    end    
-    
-    it "un objeto punto responde al método x" do
+    end
+
+    it "un objeto punto responde al metodo x" do
        expect(@p1).to respond_to(:x) # pass if @p1.respond_to?(:x)
     end
 
-    it "un objeto punto responde al método y" do
+    it "un objeto punto responde al metodo y" do
        expect(@p1).to respond_to(:y) # pass if @p1.respond_to?(:y)
     end
 
-    it "un objeto punto responde a los métodos x e y" do
+    it "un objeto punto responde a los metodos x e y" do
        expect(@p1).to respond_to(:x, :y) # pass if @p1.respond_to?(:x) &&@ p1.respond_to(:y)
     end
 
-    it "un objeto punto responde al método +" do
-       expect(@p1).to respond_to('+') # pass if @p1.respond_to?('+') 
+    it "un objeto punto responde al metodo +" do
+       expect(@p1).to respond_to('+') # pass if @p1.respond_to?('+')
     end
 
-    it "un objeto punto responde al método + con un argumento" do
-       expect(@p1).to respond_to('+').with(1).arguments 
+    it "un objeto punto responde al metodo + con un argumento" do
+       expect(@p1).to respond_to('+').with(1).arguments
     end
-    
+
   end
- 
+
   context "# producto por un escalar" do
     before :each do
       @p1 = Point::Point.new(1,1)
-    end    
-    
+    end
+
     it "la coordenada x y la coordenada y se multiplican por el valor" do
-      p2 = @p1*5 
+      p2 = @p1*5
       expect(p2.x).to eq(5)
       expect(p2.y).to eq(5)
     end
     it "Si se multiplica por -1 se obtiene el opuesto" do
-      p2 = @p1*-1 
+      p2 = @p1*-1
       expect(p2.x).to eq(-1)
       expect(p2.y).to eq(-1)
     end
   end
-  
+
   context "# opuesto de un punto" do
     it "la coordenada x y la coordenada y se multiplican por menos uno" do
       p1 = Point::Point.new(1,1)
-      p2 = - p1 
+      p2 = - p1
       expect(p2.x).to eq(-1)
       expect(p2.y).to eq(-1)
     end
   end
-  
+
   context "# suma de dos puntos " do
     it "coordenada x = original.x + otro.x, coordenada y = original.y + otro.y " do
-      p1 = Point::Point.new(1,1) 
+      p1 = Point::Point.new(1,1)
       p2 = p1 + p1
       expect(p2.x).to eq(2)
       expect(p2.y).to eq(2)
     end
   end
-  
+
   context "# comparaciones entre dos puntos basada en su distancia al origen" do
     before :each do
        @p1 = Point::Point.new(1,1)
@@ -145,7 +145,7 @@ RSpec.describe Point do
       r = Rectangle.new(1,1)
       expect(@p1 == r).to eq(false)
     end
-    
+
   end # context
 
  context "# haciendo el punto enumerable" do
@@ -159,15 +159,15 @@ RSpec.describe Point do
     it "comprobrando el metodo all? con un bloque vacio" do
       expect(@p1.all?).to eq(true)
       expect(@pm.all?).to eq(false)
-    end 
+    end
     it "comprobrando el metodo any?" do
       expect(@p1.any?).to eq(true)
       expect(@pm.any?).to eq(false)
-    end 
+    end
     it "comprobrando el metodo collect" do
       expect(@p2.map{|i| i*i}).to eq([4,4])
       expect(@p2.collect{|i| i*i}).to eq([4,4])
-    end 
+    end
     it "comprobrando el metodo count" do
       expect(@p2.count).to eq(2)
     end
@@ -188,5 +188,5 @@ RSpec.describe Point do
       expect(@p3.sort).to eq([0,1])
     end
   end
-  
+
 end # describe
